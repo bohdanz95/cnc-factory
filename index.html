@@ -579,7 +579,7 @@ button:focus-visible{outline:2px solid var(--safety);outline-offset:2px}
           <button class="punch" id="btnStart" disabled>CARICAMENTO…</button>
           <button class="online" id="btnOnline">GIOCA ONLINE <small>con i colleghi</small></button>
         </div>
-        <a class="getfile" href="https://bohdanz95.github.io/cnc-factory/cnc-factory-server.zip" target="_blank" rel="noopener" download="cnc-factory-server.zip">Scarica ZIP (html + foto) per il server</a>
+        <a class="getfile" href="https://bohdanz95.github.io/cnc-factory/cnc-factory-server.zip" target="_blank" rel="noopener">Scarica ZIP (html + foto) per il server</a>
         <a class="getfile" href="cnc.html" download="cnc.html">Scarica solo il file HTML</a>
         <div class="best"><span>Record</span><b id="bestScore">—</b></div>
       </div>
@@ -4523,6 +4523,8 @@ function boot() {
   $('#ctrlTouch').hidden = !IS_TOUCH; $('#ctrlKeys').hidden = IS_TOUCH;
   document.querySelector('.facts').innerHTML = `<span>${WORLD.machines.length + 1} macchine CNC</span><span>5 capi con cono visivo</span><span>Online fino a 4 operatori</span>`;
   NET.init();
+  // inside an embedded preview a same-site download cannot start: keep only the link to the public zip
+  if (inFrame) document.querySelectorAll('.getfile[href="cnc.html"]').forEach((el) => { el.hidden = true; });
   $('#bestScore').textContent = bestText();
   syncSegs(); applyQuality(); applyView();
   GAME.state = 'menu'; GAME.spawnAttract();
