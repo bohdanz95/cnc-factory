@@ -310,7 +310,6 @@ button:focus-visible{outline:2px solid var(--safety);outline-offset:2px}
 .punch:active{transform:translateY(3px);box-shadow:0 1px 0 #000}
 .punch[disabled]{opacity:.6;cursor:wait}
 .best{margin-top:8px;font-family:var(--f-mono);font-size:11px;color:rgba(28,30,31,.65);display:flex;justify-content:space-between}
-.getfile{display:block;margin-top:8px;text-align:center;font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;color:#1c1e1f;background:#fff;border-radius:4px;padding:8px 10px;text-decoration:none}
 .report{max-width:420px;margin:0 auto;background:var(--paper);color:var(--paper-ink);padding:18px 20px 20px;box-shadow:0 24px 60px rgba(0,0,0,.55);position:relative;font-family:var(--f-mono)}
 .report::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;background:linear-gradient(-45deg,transparent 7px,var(--paper) 7px) 0 0/14px 10px,linear-gradient(45deg,transparent 7px,var(--paper) 7px) 0 0/14px 10px}
 .r-head{text-align:center;border-bottom:2px dashed var(--paper-line);padding-bottom:10px}
@@ -579,8 +578,6 @@ button:focus-visible{outline:2px solid var(--safety);outline-offset:2px}
           <button class="punch" id="btnStart" disabled>CARICAMENTO…</button>
           <button class="online" id="btnOnline">GIOCA ONLINE <small>con i colleghi</small></button>
         </div>
-        <a class="getfile" href="https://bohdanz95.github.io/cnc-factory/cnc-factory-server.zip" target="_blank" rel="noopener">Scarica ZIP (html + foto) per il server</a>
-        <a class="getfile" href="cnc.html" download="cnc.html">Scarica solo il file HTML</a>
         <div class="best"><span>Record</span><b id="bestScore">—</b></div>
       </div>
     </div>
@@ -4523,8 +4520,6 @@ function boot() {
   $('#ctrlTouch').hidden = !IS_TOUCH; $('#ctrlKeys').hidden = IS_TOUCH;
   document.querySelector('.facts').innerHTML = `<span>${WORLD.machines.length + 1} macchine CNC</span><span>5 capi con cono visivo</span><span>Online fino a 4 operatori</span>`;
   NET.init();
-  // inside an embedded preview a same-site download cannot start: keep only the link to the public zip
-  if (inFrame) document.querySelectorAll('.getfile[href="cnc.html"]').forEach((el) => { el.hidden = true; });
   $('#bestScore').textContent = bestText();
   syncSegs(); applyQuality(); applyView();
   GAME.state = 'menu'; GAME.spawnAttract();

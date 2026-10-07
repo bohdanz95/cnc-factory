@@ -25,10 +25,9 @@ Su alcune reti mobili la connessione può non partire: col Wi-Fi funziona meglio
 
 ## File
 
-- `index.html`: il gioco (`cnc.html` è la stessa pagina, per il download)
+- `index.html`: il gioco
 - `vendor/`: three.js e PeerJS, serviti dal sito invece che da CDN
 - `photos/`: volti dei personaggi, pavimento, pareti, tessuto, capelli e poster del reparto
-- `cnc-factory-server.zip`: tutto il necessario per caricare il gioco su un altro server
 
 Le foto vanno servite dallo stesso sito: aprendo `index.html` con doppio clic dal disco non si caricano.
 Solo i caratteri arrivano da Google Fonts.
